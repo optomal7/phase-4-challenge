@@ -13,13 +13,25 @@ app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: false}))
+app.use((req, res, next) => {
+  res.locals.query = ''
+  next()
+})
 
 app.get('/', (req, res) => {
+  let reviews
+  db.getRecentReviews((error, content) => {
+    if (error) {
+      throw error
+    } else {
+      reviews = content
+    }
+  })
   db.getAlbums((error, albums) => {
     if (error) {
       res.status(500).render('error', {error})
     } else {
-      res.render('index', {albums})
+      res.render('index', {albums, reviews})
     }
   })
 })
@@ -36,6 +48,18 @@ app.get('/albums/:albumID', (req, res) => {
     }
   })
 })
+
+// app.get('/signup', (req, res) => {
+//
+// })
+//
+// app.post('/signup', (req, res) => {
+//
+// })
+//
+// app.get('/login', (req, res) => {
+//
+// })
 
 app.use((req, res) => {
   res.status(404).render('not_found')

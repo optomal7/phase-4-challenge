@@ -6,6 +6,9 @@ const client = new pg.Client(connectionString)
 
 client.connect()
 
+function getRecentReviews(cb) {
+  _query('SELECT albums.title, users.name, content, user_id, album_id FROM reviews INNER JOIN albums ON (reviews.album_id = albums.id) INNER JOIN users ON (reviews.user_id = users.id) ORDER BY created_at DESC LIMIT 3', [], cb)
+}
 function getAlbums(cb) {
   _query('SELECT * FROM albums', [], cb)
 }
@@ -30,6 +33,7 @@ function _query(sql, variables, cb) {
 }
 
 module.exports = {
+  getRecentReviews,
   getAlbums,
   getAlbumsByID,
 }

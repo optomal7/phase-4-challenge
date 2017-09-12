@@ -21,5 +21,6 @@ CREATE TABLE reviews (
   user_id INTEGER,
   FOREIGN KEY (album_id) REFERENCES albums (id),
   FOREIGN KEY (user_id) REFERENCES users (id),
-  content VARCHAR NOT NULL
+  content VARCHAR NOT NULL,
+  created_at TIMESTAMP
 );
