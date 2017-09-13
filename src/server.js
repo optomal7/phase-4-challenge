@@ -185,9 +185,9 @@ app.get('/signout', (req, res) => {
   })
 })
 
-// app.use((err, req, res, next) => {
-//   res.status(404).render('not_found', { userinfo: {}})
-// })
+app.use((err, req, res, next) => {
+  res.status(404).render('not_found', { userinfo: {}})
+})
 
 app.listen(port, () => {
   console.log(`Listening on http://localhost:${port}...`)
