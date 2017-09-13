@@ -19,7 +19,7 @@ app.use(session({
   cookie: { secure: false }
 }))
 
-app.use(express.static('public'))
+app.use(express.static('src/public'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use((req, res, next) => {
   res.locals.query = ''
