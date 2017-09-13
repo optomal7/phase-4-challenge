@@ -1,0 +1,13 @@
+<%- include header.ejs %>
+
+<h3>New review for <%= album.title %></h3>
+
+<form class="new-review" action="/albums/<%= album.id %>/reviews/new" method="post">
+  <textarea rows="4" cols="50" name="review">
+  </textarea>
+  <br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<%- include footer.ejs %>

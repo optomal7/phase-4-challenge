@@ -3,3 +3,18 @@ html, body {
   padding: 0;
   width: 100vw;
 }
+
+.trash {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa-trash {
+  padding-right: 45px;
+  background: grey;
+  color: black;
+}

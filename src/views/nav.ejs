@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-md navbar-inverse navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Vinyl</a>
+  <a class="navbar-brand" href="/">Vinyl</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <% if (locals.userinfo) { %>
+      <% if (userinfo && userinfo.id) { %>
         <li class="nav-item"><a class="nav-link" href="/users/<%= userinfo.id %>">Profile</a></li>
         <li class="nav-item"><a class="nav-link" href="/signout">Sign out</a></li>
       <% } else { %>
-        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sign-in">Login</a></li>
         <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
       <% } %>
     </ul>

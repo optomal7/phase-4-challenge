@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign Up</title>
+    <link rel="shortcut icon" type="image/png" href="http://www.favicon-generator.org/download/2014-12-05/250f43f8b6ea78d9a64d93fc00d81313.ico"/>
+
+    <script type="text/javascript" src="/script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body style="padding-top:60px;">
+    <nav class="navbar navbar-expand-md navbar-inverse navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Vinyl</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/sign-in">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
+        </ul>
+      </div>
+    </nav>
+      <div class="container">
+
+  <h1>Sign up for Vinyl</h1>
+  <% if (locals.error) { %>
+    <div class="alert alert-danger" role="alert">
+      errrrm we got a problem, <%= error.message %>
+    </div>
+  <% } %>
+
+  <form class="new-user-form" action="/signup" method="post">
+
+    <label>
+      <span>Name:</span>
+      <input type="text" name="name" />
+    </label>
+    <br>
+    <label>
+      <span>Email:</span>
+      <input type="text" name="email" />
+    </label>
+    <br>
+    <label>
+      <span>Password:</span>
+      <input type="text" name="password" />
+    </label>
+    <br>
+    <input type="submit" value="Sign Up">
+  </form>
+
+  <p>
+    Already a member?
+  </p>
+
+  <p>
+    Log in <a href="/login">here</a>.
+  </p>
+<%- include footer.ejs %>

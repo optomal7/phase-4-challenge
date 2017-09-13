@@ -1,18 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Vinyl : <%= album.title %></title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
-</head>
-<body>
+<%- include header.ejs %>
 
   <h1><%= album.title %></h1>
   <em>by <%= album.artist %></em>
 
   <h2>Reviews</h2>
 
-  <!-- TODO: implement album reviews -->
+  <a href="/albums/<%= album.id %>/reviews/new"><button type="button" name="button">Add review</button></a>
+  <br>
+  <br>
+  <div class="review list">
+    <% reviews.forEach(function(review) { %>
+      <div>
+        <span><h5><a href="/albums/<%= review.album_id %>"><%= review.title %></a>   Day reviewed: <%= review.created_at %>
+          <% if(userinfo.id === review.user_id) { %>
+              <button onclick="lastChance(<%= review.id %>)" data-id="<%= review.id %>" class="delete-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <% } %>
+        </h5>
+      </span>
+        <p><%= review.content %></p>
+        <p> by <a href="/users/<%= review.user_id %>"><%=review.name %></a></p>
+      </div>
+    <% }) %>
+  </div>
 
-</body>
-</html>
+  <script>
+    function lastChance(id) {
+      if (confirm("Are you sure you want to delete this?") === true) {
+        let client = new XMLHttpRequest();
+        client.open("DELETE", "/users/reviews/" +id );
+        client.send();
+        location.reload();
+      }
+    }
+  </script>
+
+<%- include footer.ejs %>
