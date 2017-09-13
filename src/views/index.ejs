@@ -30,7 +30,7 @@
     <div class="review list">
       <% reviews.forEach(function(review) { %>
         <div>
-          <h5><a href="/albums/<%= review.album_id %>"><%= review.title %></a></h5>
+          <h5><a href="/albums/<%= review.album_id %>"><%= review.title %></a>   Day reviewed: <%= review.created_at %></h5>
           <p><%= review.content %></p>
           <p> by <%=review.name %></p>
         </div>
